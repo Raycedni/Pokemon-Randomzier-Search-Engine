@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon Randomzier Search Engine", "Pokemon Randomzier Search Engine\Pokemon Randomzier Search Engine.csproj", "{1C520CA7-B797-4A46-8F7F-4A048938E161}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C520CA7-B797-4A46-8F7F-4A048938E161}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C520CA7-B797-4A46-8F7F-4A048938E161}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C520CA7-B797-4A46-8F7F-4A048938E161}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C520CA7-B797-4A46-8F7F-4A048938E161}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAA7061B-24F6-4CEE-A72B-38B1D634C93D}
+	EndGlobalSection
+EndGlobal
