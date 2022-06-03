@@ -2,13 +2,15 @@
 
 namespace Pokemon_Typings.backend
 {
-    class Pokemon
+    public class Pokemon
     {
         public int index;
         public string name;
         public string type;
         
         public string moves;
+        public int level = -1;
+        public string carriedItem = "no item";
 
         public string preEvolution = "";
         public string evolution = "";

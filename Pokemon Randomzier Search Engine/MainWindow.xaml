@@ -23,9 +23,17 @@
             </Grid.RowDefinitions>
 
 
-            <TextBox Margin="10,10,10,10" Name="tbxInputFile" Text="" TextWrapping="NoWrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" TextChanged="tbxInputFile_TextChanged" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" AllowDrop="True"/>
-            <Button Margin="10,10,10,10"  x:Name="btnOpenFile" Content="Button" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="btnOpenFile_Click" Grid.Column="1" Grid.Row="0"/>
+            <TextBox Margin="10,10,10,10" Name="tbxInputFile" Text="" TextWrapping="NoWrap" VerticalAlignment="Bottom"  HorizontalScrollBarVisibility="Auto" TextChanged="tbxInputFile_TextChanged" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" AllowDrop="True"/>
+            <Grid Grid.Column="1" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="10,10,10,10"  x:Name="btnOpenFile" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="btnOpenFile_Click" Grid.Column="0"/>
+                <Button Margin="10,10,10,10"  x:Name="btnOpenTrainwerWindow" Content="Trainer-Fenster" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="btnOpenTrainwerWindow_Click" Grid.Column="1"/>
+            </Grid>
             <ComboBox Margin="10,10,10,10" Name="comboBoxSearch" IsEditable="True" Keyboard.KeyDown="TbxSearch_KeyDown" Grid.Column="2" Grid.Row="0"/>
+            
 
             <Grid Grid.Row="1" Grid.Column="0">
                 <Grid.ColumnDefinitions>

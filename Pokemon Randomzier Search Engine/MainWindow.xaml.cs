@@ -17,8 +17,9 @@ namespace Pokemon_Randomzier_Search_Engine
     public partial class MainWindow : Window
     {
         FileHandler fileHandler = new FileHandler();
-        PokemonDatabase pokemonDatabase = new PokemonDatabase();
+        public RandomizerDatabase pokemonDatabase = new RandomizerDatabase();
         string fileContent;
+        TrainerWindow trainerWindow;
 
         public MainWindow()
         {
@@ -50,14 +51,14 @@ namespace Pokemon_Randomzier_Search_Engine
             }
         }
 
-        private void initDB(PokemonDatabase pokemonDatabase, string logFileContent)
+        private void initDB(RandomizerDatabase pokemonDatabase, string logFileContent)
         {
-            pokemonDatabase.fillDatabase(
+            pokemonDatabase.fillPokemonDatabase(
                     fileHandler.getPokemonBaseStats_Types(logFileContent),
                     fileHandler.getPokemonMoves(logFileContent));
         }
 
-        private void fillComboBoxWithPokemon(ComboBox comboBox, PokemonDatabase pokemonDatabase)
+        private void fillComboBoxWithPokemon(ComboBox comboBox, RandomizerDatabase pokemonDatabase)
         {
             comboBox.IsEnabled = true;
             foreach (string pokemon in pokemonDatabase.getRegisteredPokemon())
@@ -86,7 +87,7 @@ namespace Pokemon_Randomzier_Search_Engine
             }
         }
 
-        private void searchInDB(string searchString)
+        public void searchInDB(string searchString)
         {
             Grid grid;
             TextBox textBox;
@@ -174,6 +175,9 @@ namespace Pokemon_Randomzier_Search_Engine
         {
             Properties.Settings.Default.ndsLogFile = tbxInputFile.Text;
             Properties.Settings.Default.Save();
+
+            if(trainerWindow != null)
+                trainerWindow.Close();
         }
 
         private void TbxSearch_KeyDown(object sender, KeyEventArgs e)
@@ -182,6 +186,14 @@ namespace Pokemon_Randomzier_Search_Engine
             {
                 searchInDB(comboBoxSearch.Text);
             }
+        }
+
+        private void btnOpenTrainwerWindow_Click(object sender, RoutedEventArgs e)
+        {
+            pokemonDatabase.fillTrainerDatabase(fileHandler.getTrainers(fileContent));
+            trainerWindow = new TrainerWindow(this);
+
+            trainerWindow.Show();
         }
     }
 }

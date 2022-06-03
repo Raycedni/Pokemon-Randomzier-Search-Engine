@@ -52,6 +52,19 @@ namespace Pokemon_Typings.backend
             return strlist.ToList();
         }
 
+        public List<string> getTrainers(string ndsLog)
+        {
+            string typeList = between(ndsLog, "--Trainers Pokemon--", "--Static Pokemon--");
+
+            String[] spearator = { "\r\n" };
+
+            // using the method
+            String[] strlist = typeList.Split(spearator,
+               StringSplitOptions.RemoveEmptyEntries);
+
+            return strlist.ToList();
+        }
+
             private string between(string STR, string FirstString, string LastString)
         {
             string FinalString;

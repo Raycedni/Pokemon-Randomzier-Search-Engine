@@ -1,16 +1,18 @@
-﻿using System;
+﻿using Pokemon_Randomzier_Search_Engine.backend;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 
 namespace Pokemon_Typings.backend
 {
-    class PokemonDatabase
+    public class RandomizerDatabase
     {      
 
         private Dictionary<string, Pokemon> pokemonDic = new Dictionary<string, Pokemon>();
+        private Dictionary<string, List<Trainer>> trainerDic = new Dictionary<string, List<Trainer>>();
 
-        public void fillDatabase(List<string> pokemonTypeList, List<string> pokemonMoveSetList)
+        public void fillPokemonDatabase(List<string> pokemonTypeList, List<string> pokemonMoveSetList)
         {
             pokemonDic.Clear();
 
@@ -41,6 +43,46 @@ namespace Pokemon_Typings.backend
 
                 }
             }
+        }
+
+        public void fillTrainerDatabase(List<string> trainerList)
+        {
+            trainerDic.Clear();
+
+            Trainer tmpTrainer;
+
+            foreach (string trainerString in trainerList)
+            {
+                //Trainer wird von string ausgelesen
+                tmpTrainer = new Trainer(trainerString, this);
+
+                //Wird geprüft ob für Trainer bereits ein Encounter existiert
+                if (trainerDic.ContainsKey(tmpTrainer.trainerNameRandomized))
+                {
+                    //Encounter wird dem Trainer hinzugefügt
+                    trainerDic[tmpTrainer.trainerNameRandomized].Add(tmpTrainer);
+                }
+                else
+                {
+                    //Neues Encounter wird erstellt und dann dem Dictionary hinzugefügt
+                    trainerDic.Add(tmpTrainer.trainerNameRandomized, new List<Trainer>());
+                    trainerDic[tmpTrainer.trainerNameRandomized].Add(tmpTrainer);
+                    tmpTrainer = null;
+                }
+            }
+        }
+
+        public List<Trainer> getTrainer(string trainerName)
+        {
+            if (trainerDic.ContainsKey(trainerName))
+                return trainerDic[trainerName];
+            else
+                throw new Exception("Trainer: " + trainerName + " nicht gefunden");            
+        }
+
+        public List<String> getTrainerNames()
+        {
+            return trainerDic.Keys.ToList();
         }
 
         private int getPokemonEvolutionStage(Pokemon pokemon)
