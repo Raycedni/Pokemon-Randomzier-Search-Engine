@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Pokemon_Randomzier_Search_Engine.backend
 {
@@ -70,7 +71,8 @@ namespace Pokemon_Randomzier_Search_Engine.backend
 
                 levelInfo = splitInfo[1];
 
-                levelInfo = levelInfo.Substring(levelInfo.IndexOf("v")+1, (levelInfo.IndexOf("v") + 1) - (levelInfo.IndexOf(",") + 1) - 1);
+                levelInfo = int.Parse(Regex.Replace(levelInfo, "[^0-9]", "")).ToString();
+                
 
                 tmpList.Add(pokemonName + " " + levelInfo);
             }

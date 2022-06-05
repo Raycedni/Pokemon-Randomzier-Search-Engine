@@ -54,11 +54,13 @@ namespace Pokemon_Randomzier_Search_Engine
         private void fillPokemonList(string trainerName, int encounter)
         {
             listboxPokemonList.Items.Clear();
+            listBoxPokemonLevelList.Items.Clear();
 
             Trainer trainer = mainWindow.pokemonDatabase.getTrainer(trainerName)[encounter - 1];
             foreach(Pokemon pokemon in trainer.pokemonList)
             {
                 listboxPokemonList.Items.Add(pokemon.name);
+                listBoxPokemonLevelList.Items.Add(pokemon.level);
             }
         }
 

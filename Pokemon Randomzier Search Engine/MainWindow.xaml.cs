@@ -190,10 +190,16 @@ namespace Pokemon_Randomzier_Search_Engine
 
         private void btnOpenTrainwerWindow_Click(object sender, RoutedEventArgs e)
         {
-            pokemonDatabase.fillTrainerDatabase(fileHandler.getTrainers(fileContent));
-            trainerWindow = new TrainerWindow(this);
+            try
+            {
+                pokemonDatabase.fillTrainerDatabase(fileHandler.getTrainers(fileContent));
+                trainerWindow = new TrainerWindow(this);
 
-            trainerWindow.Show();
+                trainerWindow.Show();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
