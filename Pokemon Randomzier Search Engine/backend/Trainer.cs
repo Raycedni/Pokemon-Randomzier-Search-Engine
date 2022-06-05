@@ -16,6 +16,7 @@ namespace Pokemon_Randomzier_Search_Engine.backend
 
         public Trainer(string trainerInfo, RandomizerDatabase pokemonDatabase)
         {
+            int i;
             string[] seperator = { "(", " => ", ")", " - "};
 
             string[] values = trainerInfo.Split(seperator,
@@ -24,7 +25,13 @@ namespace Pokemon_Randomzier_Search_Engine.backend
             trainerNameOriginal = values[1];
             trainerNameRandomized = values[2];
 
-            foreach(string pokemon in getPokemonNamesFromTrainerInfo(values[3]))
+            for(i = 0; i < values.Length; i++)
+            {
+                if (values[i].Contains("Lv"))
+                    break;
+            }
+
+            foreach(string pokemon in getPokemonNamesFromTrainerInfo(values[i]))
             {
                 pokemonList.Add(pokemonDatabase.GetPokemon(pokemon.Split(' ')[0]));
                 pokemonList[pokemonList.Count - 1].level = int.Parse(pokemon.Split(' ')[1]);
